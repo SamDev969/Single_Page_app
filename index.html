@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A student-friendly guide to building smooth, dark-mode single page web apps in 2026 using HTML, CSS and JavaScript.">
+<title>Build Single Page Web Apps in 2026</title>
+<style>
+:root{
+  --bg:#f6f8fc; --surface:#fff; --text:#172033; --muted:#5e687a;
+  --primary:#5b5cf0; --primary2:#7c3aed; --border:#e4e8f0;
+  --code:#111827; --shadow:0 12px 35px rgba(20,30,60,.08);
+}
+body.dark{
+  --bg:#0b1020; --surface:#12192b; --text:#edf2ff; --muted:#aeb8cf;
+  --primary:#8b8df8; --primary2:#a78bfa; --border:#27324a;
+  --code:#080c16; --shadow:0 12px 35px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-weight:800;color:var(--text);text-decoration:none}.brand span{color:var(--primary)}
+button{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+button:hover{transform:translateY(-1px)}
+.hero{max-width:1100px;margin:auto;padding:75px 20px 45px;display:grid;grid-template-columns:1.35fr .8fr;gap:35px;align-items:center}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--primary);font-weight:800;font-size:.85rem}
+h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.05;margin:15px 0}
+h2{font-size:2rem;margin-top:0}h3{margin-bottom:8px}
+.lead{font-size:1.12rem;color:var(--muted);max-width:680px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:24px}
+.demo{min-height:250px;display:grid;place-items:center;text-align:center}
+.orb{width:115px;height:115px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 0 50px color-mix(in srgb,var(--primary) 45%,transparent);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+main{max-width:1100px;margin:auto;padding:10px 20px 70px}
+section{padding:45px 0;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tip{border-left:4px solid var(--primary);padding:14px 18px;background:color-mix(in srgb,var(--primary) 7%,var(--surface));border-radius:8px}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--code);color:#dbe5ff;padding:20px;border-radius:14px;overflow:auto;font-size:.9rem}
+.explain{color:var(--muted)}
+.demo-app{display:grid;gap:12px;justify-items:center}
+.counter{font-size:2rem;font-weight:900}
+.progress{width:min(420px,100%);height:12px;background:var(--border);border-radius:99px;overflow:hidden}
+.progress span{display:block;height:100%;width:45%;background:linear-gradient(90deg,var(--primary),var(--primary2));transition:width .35s ease}
+.controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+footer{max-width:1100px;margin:auto;padding:30px 20px;color:var(--muted);text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:45px}.grid{grid-template-columns:1fr}nav{padding-inline:14px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="brand" href="#">SamDev<span> Network</span></a>
+<div>
+<button id="themeBtn" aria-label="Toggle dark mode">🌙 Dark mode</button>
+</div>
+</nav>
+</header>
+
+<div class="hero">
+<div>
+<span class="badge">Student Web Development Lesson • 2026</span>
+<h1>Build Single Page Web Apps in 2026</h1>
+<p class="lead">Learn how HTML, CSS and JavaScript work together to create fast, responsive and user-friendly single page web apps—with smooth animations, dark mode and low memory usage.</p>
+<a href="#lesson"><button>Start the lesson ↓</button></a>
+</div>
+<div class="card demo" aria-label="Animated demonstration">
+<div>
+<div class="orb"></div>
+<p class="explain">CSS animation: smooth movement without JavaScript.</p>
+</div>
+</div>
+</div>
+
+<main id="lesson">
+<section>
+<h2>1. What is a Single Page Web App?</h2>
+<p>A single page web app (SPA) is a website where the browser loads one main page and JavaScript changes parts of that page without constantly loading new HTML documents.</p>
+<div class="grid">
+<div class="card"><h3>HTML</h3><p class="explain">Creates the structure: headings, buttons, sections, forms and content.</p></div>
+<div class="card"><h3>CSS</h3><p class="explain">Controls layout, colors, responsive design, dark mode and animations.</p></div>
+<div class="card"><h3>JavaScript</h3><p class="explain">Adds behavior: clicks, counters, theme switching and dynamic updates.</p></div>
+</div>
+</section>
+
+<section>
+<h2>2. Build a Small Interactive App</h2>
+<p>Try the example below. It demonstrates state changes and a smooth CSS transition.</p>
+<div class="card demo-app">
+<div class="counter" id="count">0%</div>
+<div class="progress"><span id="bar"></span></div>
+<div class="controls">
+<button id="add">Increase progress</button>
+<button id="reset">Reset</button>
+</div>
+</div>
+<p class="explain"><strong>How it works:</strong> JavaScript stores the current value, then updates the text and the progress bar. CSS handles the smooth movement using <code>transition</code>.</p>
+</section>
+
+<section>
+<h2>3. How the HTML is Made</h2>
+<p>HTML gives the application meaningful structure. Prefer semantic elements such as <code>header</code>, <code>main</code>, <code>section</code>, <code>button</code> and <code>footer</code>.</p>
+<pre><code>&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;My App&lt;/h2&gt;
+    &lt;p&gt;Application content goes here.&lt;/p&gt;
+    &lt;button id="add"&gt;Increase&lt;/button&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+<p class="explain">Good HTML improves accessibility, organization and maintainability.</p>
+</section>
+
+<section>
+<h2>4. How the CSS is Made</h2>
+<p>CSS creates the visual design and keeps animation work efficient.</p>
+<pre><code>:root {
+  --bg: #f6f8fc;
+  --text: #172033;
+}
+
+body.dark {
+  --bg: #0b1020;
+  --text: #edf2ff;
+}
+
+.orb {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-14px); }
+}</code></pre>
+<div class="tip"><strong>Best practice:</strong> Animate <code>transform</code> and <code>opacity</code> where possible. Avoid repeatedly animating expensive layout properties such as width, height, top and left.</div>
+</section>
+
+<section>
+<h2>5. How Dark Mode is Made</h2>
+<p>This lesson uses CSS variables. JavaScript only adds or removes one class from the <code>body</code>.</p>
+<pre><code>// JavaScript
+document.body.classList.toggle("dark");</code></pre>
+<p class="explain">This approach is simple because the colors are controlled in one place—the CSS variables. You can also save the user's choice with <code>localStorage</code>.</p>
+</section>
+
+<section>
+<h2>6. How JavaScript Controls the App</h2>
+<pre><code>let progress = 0;
+
+add.addEventListener("click", () =&gt; {
+  progress = Math.min(progress + 10, 100);
+  count.textContent = progress + "%";
+  bar.style.width = progress + "%";
+});
+
+reset.addEventListener("click", () =&gt; {
+  progress = 0;
+  count.textContent = "0%";
+  bar.style.width = "0%";
+});</code></pre>
+<p class="explain">The important idea is <strong>state → update → display</strong>. Keep the state small and update only the DOM elements that actually changed.</p>
+</section>
+
+<section>
+<h2>7. Best Practices for Smooth Animations</h2>
+<div class="grid">
+<div class="card"><h3>Use transform</h3><p class="explain">Prefer <code>transform</code> and <code>opacity</code> for many animations.</p></div>
+<div class="card"><h3>Keep it subtle</h3><p class="explain">Short, purposeful animations feel faster than excessive effects.</p></div>
+<div class="card"><h3>Respect reduced motion</h3><p class="explain">Users can request less motion. Your site should respect that preference.</p></div>
+</div>
+<pre><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></pre>
+</section>
+
+<section>
+<h2>8. How to Keep Memory Usage Low</h2>
+<ul>
+<li>Remove event listeners and timers that are no longer needed.</li>
+<li>Do not create thousands of DOM elements when a smaller structure will work.</li>
+<li>Avoid large images; resize and compress assets before adding them.</li>
+<li>Reuse DOM elements instead of repeatedly creating and deleting them.</li>
+<li>Avoid unnecessary JavaScript libraries for simple features.</li>
+<li>Use browser developer tools to inspect memory and performance when an app becomes slow.</li>
+</ul>
+</section>
+
+<section>
+<h2>9. Student Project Challenge</h2>
+<div class="card">
+<h3>Build your own mini SPA</h3>
+<p>Create a single-page student dashboard containing:</p>
+<ul>
+<li>A navigation bar and welcome section</li>
+<li>A dark-mode button</li>
+<li>A task or progress tracker</li>
+<li>At least one smooth animation</li>
+<li>A responsive mobile layout</li>
+<li>Clear HTML, CSS and JavaScript comments explaining your code</li>
+</ul>
+<p><strong>Goal:</strong> make the app fast, accessible and easy for another student to understand.</p>
+</div>
+</section>
+
+<section>
+<h2>10. Quick Summary</h2>
+<div class="tip"><strong>Remember:</strong> HTML builds the structure, CSS creates the experience, and JavaScript creates the interaction. Good web apps use all three together without making the browser do unnecessary work.</div>
+</section>
+</main>
+
+<footer>
+<p>© 2026 SamDev Network • Student Web Development Tutorial</p>
+</footer>
+
+<script>
+const themeBtn = document.getElementById("themeBtn");
+const add = document.getElementById("add");
+const reset = document.getElementById("reset");
+const count = document.getElementById("count");
+const bar = document.getElementById("bar");
+
+let progress = 0;
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") document.body.classList.add("dark");
+updateThemeButton();
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  updateThemeButton();
+});
+
+function updateThemeButton() {
+  themeBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light mode" : "🌙 Dark mode";
+}
+
+add.addEventListener("click", () => {
+  progress = Math.min(progress + 10, 100);
+  updateProgress();
+});
+
+reset.addEventListener("click", () => {
+  progress = 0;
+  updateProgress();
+});
+
+function updateProgress() {
+  count.textContent = progress + "%";
+  bar.style.width = progress + "%";
+}
+</script>
+</body>
+</html>
