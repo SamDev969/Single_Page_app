@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A student-friendly guide to building smooth, dark-mode single page web apps in 2026 using HTML, CSS and JavaScript.">
+<link rel="icon" type="image/png" href="logo.png">
 <title>Build Single Page Web Apps in 2026</title>
 <style>
 :root{
@@ -20,7 +21,7 @@ body.dark{
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
 header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{font-weight:800;color:var(--text);text-decoration:none}.brand span{color:var(--primary)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--text);text-decoration:none}.brand-logo{width:32px;height:32px;border-radius:10px;object-fit:cover;box-shadow:0 6px 16px rgba(91,92,240,.18)}.brand span{color:var(--primary)}
 button{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}
 button:hover{transform:translateY(-1px)}
 .hero{max-width:1100px;margin:auto;padding:75px 20px 45px;display:grid;grid-template-columns:1.35fr .8fr;gap:35px;align-items:center}
@@ -51,7 +52,10 @@ footer{max-width:1100px;margin:auto;padding:30px 20px;color:var(--muted);text-al
 <body>
 <header>
 <nav>
-<a class="brand" href="#">SamDev<span> Network</span></a>
+<a class="brand" href="#" aria-label="SamDev Network home">
+<img class="brand-logo" src="logo.png" alt="SamDev Network logo">
+<span>SamDev<span> Network</span></span>
+</a>
 <div>
 <button id="themeBtn" aria-label="Toggle dark mode">🌙 Dark mode</button>
 </div>
